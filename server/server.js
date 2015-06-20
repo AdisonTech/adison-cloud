@@ -7,7 +7,7 @@ Meteor.startup(function() {
 	}
 
 	
-Sensors.mqttConnect('mqtt://test.mosquitto.org', ['revspace/sensors/#']);
+Sensors.mqttConnect('mqtt://portal.adisontech.com', ['node/#']);
 });
 
 Meteor.methods({
