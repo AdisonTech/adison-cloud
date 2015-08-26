@@ -1,23 +1,42 @@
 
 Bulb = React.createClass({
   getInitialState() {
-    return {on: false};
+    return {on: false, brightness: 50};
   },
   handleOnOff() {
     this.setState({on: !this.state.on});
   },
-  handleBrightness() {
+  handleSettings() {
+    this.refs.bulbSettings.show();
+  },
+  handleBrightness(e, value) {
+    var b = Math.round(value*100);
+    this.setState({brightness: b});
   },
   render() {
     var node = this.props.node;
-    var bulbIcon = this.state.on ? '/icons/light-bulb-on.png' : '/icons/light-bulb.png';
+    var bulbColor = this.state.on ? Colors.yellow500 : null;
     return (
-      <ListItem
-        leftIcon = <img src={bulbIcon}/>
-        primaryText = {node.friendlyName}
-        rightIcon = <img src='/icons/brightness.png'/>
-        onTouchTap = {this.handleOnOff}
-      /> 
+      <div>
+        <ListItem
+          leftIcon = <FontIcon className="fa fa-lightbulb-o" color={bulbColor}/>
+          primaryText = {node.friendlyName}
+          rightIconButton = <IconButton onTouchTap={this.handleSettings} iconClassName="fa fa-cog" />
+          onTouchTap = {this.handleOnOff}
+        /> 
+        <Dialog
+          ref="bulbSettings"
+          actions={[{text: 'OK'}]}
+          onChange={this.handleBrightness}
+          onDragStart={this.handleBrightness}
+          title="Bulb Settings">
+          Brightness: {this.state.brightness}%
+          <Slider name="brightness" 
+            onChange={this.handleBrightness} 
+            defaultValue={this.state.brightness/100} 
+          /> 
+        </Dialog>
+      </div>
     )
   }
 });
@@ -64,7 +83,9 @@ SiteDetail = React.createClass({
     });
     return (
       <div>
-        <AppBar title={this.data.site.name} onLeftIconButtonTouchTap={this.handleLeftButton}/>
+        <AppBar title={this.data.site.name} 
+          onLeftIconButtonTouchTap={this.handleLeftButton}
+        />
         <List>{nodes}</List>
       </div>
     )
