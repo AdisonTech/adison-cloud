@@ -3,7 +3,7 @@ Meteor.publish('site', function(name) {
   return Sites.find({name:name});
 });
 
-Meteor.publish('sites', function() {
+Meteor.publish('allsites', function() {
   console.log('meteor publish sites');
   return Sites.find();
 });

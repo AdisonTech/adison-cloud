@@ -14,3 +14,4 @@ npm-container
 cosmos:browserify
 kadira:flow-router
 kadira:react-layout
+gilbertwat:deepmerge
