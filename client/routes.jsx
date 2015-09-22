@@ -9,7 +9,7 @@ FlowRouter.route('/site/:siteId', {
   name: 'siteDetails',
   action(params) {
     console.log("SiteDetails route:", params.siteId);
-    ReactLayout.render(MainLayout, {content: <SiteDetail siteId={params.siteId}/>});
+    ReactLayout.render(MainLayout, {content: <SiteDetailContainer siteId={params.siteId}/>});
   }
 });
 

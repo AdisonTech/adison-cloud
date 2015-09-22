@@ -11,6 +11,7 @@ IconButton = mui.IconButton;
 Colors = mui.Styles.Colors;
 Dialog = mui.Dialog;
 Slider = mui.Slider;
+Toggle = mui.Toggle;
 
 MainLayout = React.createClass({
   render() {
