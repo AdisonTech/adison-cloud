@@ -6,8 +6,7 @@ Adison cloud is a Meteor web application that provides a user interface to an IO
 
 ![Screenshot](https://raw.githubusercontent.com/AdisonTech/adison-cloud/master/doc/screenshot.png "Screenshot")
 
-
-## Why?
+## Why
 
 This project aims to provide a modern automation system that uses the latest technologies (Meteor/nodejs) and is easy to customize and extend for custom applications.  This should be a good starting point for developers/makers who want a  more flexible home automation system than the current line of commercial offererings.  It is also designed to work well in industrial automation settings where you might need to monitor and control a number of systems remotely.  
 
@@ -21,9 +20,19 @@ There are 3 main components:
 
 ![Architecture](https://raw.githubusercontent.com/AdisonTech/adison-cloud/master/doc/architecture.png "Adison Architecture")
 
+The Cloud and Gateway communicate using Meteor DDP.  This is already built into meteor, and allows us efficient real-time communication to a gateway behind a firewall using standard HTTP ports.  
+
+## Principles
+
+* leverage latest technology (Meteor, React, nodejs, material-ui, etc)
+* keep it simple to set up (minimize number of separate components services required to make the system work).  For this reason we don't have a separate MQTT server, etc.
+* this is not targetted at the mainstream home automation market, but rather developers/makers who want a more flexible system
+* assume users can write code if needed (don't try to create a GUI to configure every possible permutation -- focus on solid base technologies that users can extend as needed)
+
 ## Status
 
-We are just getting started.  Currently, we support Wemo Link (light bulbs) and Wemo Insight nodes.  See [Issues](https://github.com/AdisonTech/adison-cloud/issues) for status on features in progress.
+We are just getting started.  Currently, Wemo Link (light bulbs) and Wemo Insight nodes are supported.  See [Issues](https://github.com/AdisonTech/adison-cloud/issues) for status on features in progress.
+
 
 
 
