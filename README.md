@@ -42,7 +42,7 @@ The Cloud and Gateway communicate using Meteor DDP.  This is already built into 
 
 We are just getting started.  Currently, Wemo Link (light bulbs) and Wemo Insight nodes are supported.  See [Issues](https://github.com/AdisonTech/adison-cloud/issues) for status on features in progress.
 
-Tested in Arch Linux and Windows 7 with NodeJS 4.1 and Meteor 1.2.
+Tested on Linux and Windows 7 with NodeJS 4.1 and Meteor 1.2.
 
 ## License 
 
