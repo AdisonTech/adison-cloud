@@ -13,9 +13,10 @@ This project aims to provide a modern automation system that uses the latest tec
 ## Installation
 
 * [install](https://www.meteor.com/install) Meteor
-* git clone https://github.com/AdisonTech/adison-cloud.git
+* git clone https://github.com/AdisonTech/adison-cloud.git or [download](https://github.com/AdisonTech/adison-cloud/archive/master.zip) zip archive.
 * cd adison-cloud
 * meteor
+* open http://localhost:3000
 * install and configure the [Adison Gateway](https://github.com/AdisonTech/adison-gateway) to talk to your cloud instance
 
 ## Architecture
