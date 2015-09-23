@@ -10,6 +10,14 @@ Adison cloud is a Meteor web application that provides a user interface to an IO
 
 This project aims to provide a modern automation system that uses the latest technologies (Meteor/nodejs) and is easy to customize and extend for custom applications.  This should be a good starting point for developers/makers who want a  more flexible home automation system than the current line of commercial offererings.  It is also designed to work well in industrial automation settings where you might need to monitor and control a number of systems remotely.  
 
+## Installation
+
+* [install](https://www.meteor.com/install) Meteor
+* git clone https://github.com/AdisonTech/adison-cloud.git
+* cd adison-cloud
+* meteor
+* install and configure the [Adison Gateway](https://github.com/AdisonTech/adison-gateway) to talk to your cloud instance
+
 ## Architecture
 
 There are 3 main components:
