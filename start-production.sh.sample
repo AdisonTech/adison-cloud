@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#export HOME=~/portal-build/bundle
+export MONGO_URL=mongodb://localhost:27017/portal
+export ROOT_URL=http://portal.mycompany.com
+export PORT=3000
+(cd ~/portal-build/bundle; node main.js)
+
