@@ -38,7 +38,7 @@ The Cloud and Gateway communicate using Meteor DDP.  This is already built into 
 ## Principles
 
 * leverage latest mainstream, well-understood technologies (Meteor, React, nodejs, material-ui, JS promises, etc).
-* keep it simple to set up (minimize number of separate components services required to make the system work).  For this reason we don't have a separate MQTT server, etc.
+* keep it simple to set up (minimize number of separate components and services required to make the system work).  For this reason we don't have a separate MQTT server, etc.
 * not targetted at the mainstream home automation market (there are already plenty of solutions there), but rather developers/makers who want an open, more flexible system.
 * assume users can write code if needed (don't try to create a GUI to configure every possible permutation -- focus on solid base technologies that users can extend as needed).
 
