@@ -19,7 +19,7 @@ This project aims to provide a modern automation system that uses the latest tec
 * open http://localhost:3000
 * install and configure the [Adison Gateway](https://github.com/AdisonTech/adison-gateway) to talk to your cloud instance
 
-You can also easily deploy to the meteor cloud by typing "meteor deploy myapp.meteor.com".  The meteor cloud is generally only used for testing/verification.
+You can also easily deploy to the meteor cloud by typing "meteor deploy myapp.meteor.com".  The meteor cloud is generally only used for testing/verification.  If you deploy to meteor.com, make sure you update the gateway config.js to point to the cloud instance vs localhost.
 
 There is plenty of documentation available for deploying to other cloud technolgies such as Amazon AWS and is beyond the scope of this document.
 
