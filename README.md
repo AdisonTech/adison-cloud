@@ -33,7 +33,7 @@ There are 3 main components:
 
 ![Architecture](https://raw.githubusercontent.com/AdisonTech/adison-cloud/master/doc/architecture.png "Adison Architecture")
 
-The Cloud and Gateway communicate using Meteor DDP.  This is already built into meteor, and allows us efficient real-time communication to a gateway behind a firewall using standard HTTP ports.  
+The Cloud and Gateway communicate using Meteor DDP.  This is already built into meteor, and gives us efficient real-time communication to a gateway behind a firewall using standard HTTP(s) ports.  
 
 ## Principles
 
