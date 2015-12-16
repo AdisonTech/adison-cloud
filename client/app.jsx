@@ -1,5 +1,5 @@
 ThemeManager = new mui.Styles.ThemeManager();
-injectTapEventPlugin();
+//injectTapEventPlugin();
 
 AppBar = mui.AppBar;
 DatePicker = mui.DatePicker;
