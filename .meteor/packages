@@ -6,10 +6,8 @@
 
 insecure
 react
-meteorhacks:npm
 
 
-npm-container
 cosmos:browserify
 kadira:flow-router
 kadira:react-layout

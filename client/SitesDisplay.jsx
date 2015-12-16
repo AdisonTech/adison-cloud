@@ -22,7 +22,7 @@ SitesDisplay = React.createClass({
 
   getChildContext() {
       return {
-          muiTheme: ThemeManager.getCurrentTheme()
+          muiTheme: ThemeManager.getMuiTheme(LightRawTheme)
       };
   },
 

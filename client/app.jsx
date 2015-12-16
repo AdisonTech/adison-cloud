@@ -1,17 +1,19 @@
-ThemeManager = new mui.Styles.ThemeManager();
-//injectTapEventPlugin();
+injectTapEventPlugin();
 
-AppBar = mui.AppBar;
-DatePicker = mui.DatePicker;
-TextField = mui.TextField;
-List = mui.List;
-ListItem = mui.ListItem;
-FontIcon = mui.FontIcon;
-IconButton = mui.IconButton;
-Colors = mui.Styles.Colors;
-Dialog = mui.Dialog;
-Slider = mui.Slider;
-Toggle = mui.Toggle;
+ThemeManager = MUI.Styles.ThemeManager;
+LightRawTheme = MUI.Styles.LightRawTheme;   
+
+AppBar = MUI.AppBar;
+DatePicker = MUI.DatePicker;
+TextField = MUI.TextField;
+List = MUI.List;
+ListItem = MUI.ListItem;
+FontIcon = MUI.FontIcon;
+IconButton = MUI.IconButton;
+Colors = MUI.Styles.Colors;
+Dialog = MUI.Dialog;
+Slider = MUI.Slider;
+Toggle = MUI.Toggle;
 
 MainLayout = React.createClass({
   render() {
@@ -22,10 +24,4 @@ MainLayout = React.createClass({
     )
   }
 });
-
-Meteor.startup(function () {
-  injectTapEventPlugin();
-});
-
-
 
