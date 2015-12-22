@@ -112,7 +112,8 @@ SiteDetail = React.createClass({
   render() {
     var that = this;
     var name = this.props.site.name;
-    var nodes = this.props.site.nodes.map(function(n) {
+    var nodes = this.props.nodes.map(function(n) {
+      console.log('node', n);
       return <Node key={n.friendlyName} 
               node={n} cmdBrightness={that.cmdBrightness}
               cmdBinaryState={that.cmdBinaryState} />
@@ -133,26 +134,23 @@ SiteDetailContainer = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      site: Sites.findOne({_id:this.props.siteId})
+      site: Sites.findOne({_id:this.props.siteId}),
+      nodes: Nodes.find({siteId: this.props.siteId}).fetch(),
     }
   },
   cmdBrightness(id, b) {
-    var sel = {name: this.data.site.name, 'nodes.deviceId': id};
-    var mod = {$set: {'nodes.$.cmdBrightness':b}, $inc: {cmdSeq:1}};
-    Meteor.call('updateSiteRaw', sel, mod);
+    Meteor.call('setNode', id, 'cmdBrightness', b);
   },
 
   cmdBinaryState(id, b) {
-    var sel = {name: this.data.site.name, 'nodes.deviceId': id};
-    var mod = {$set: {'nodes.$.cmdBinaryState':b}, $inc: {cmdSeq:1}};
-    Meteor.call('updateSiteRaw', sel, mod);
+    Meteor.call('setNode', id, 'cmdBinaryState', b);
   },
   render() {
+    console.log('data', this.data);
     return this.data.site ? <SiteDetail cmdBrightness={this.cmdBrightness} 
-      cmdBinaryState={this.cmdBinaryState} site={this.data.site} /> :
+      cmdBinaryState={this.cmdBinaryState} site={this.data.site} nodes={this.data.nodes} /> :
       <div>Loading ...</div>;
   }
 });
-
 
 

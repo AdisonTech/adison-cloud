@@ -1,25 +1,35 @@
 
 
 Meteor.methods({
-  updateNodes: function(siteName, nodes) {
-    console.log('updateNodes method:', siteName, nodes);
+  updateNode: function(siteName, node) {
+    console.log('updateNode method:', siteName, node);
     var site = Sites.findOne({name:siteName});
     console.log('findOne returned', site);
     if (!site) {
       console.log('creating a new site');
-      Sites.insert({name:siteName, nodes:nodes});
+      site = Sites.insert({name:siteName});
+    } 
+
+    node.siteId = site._id;
+
+    var node_ = Nodes.findOne({siteId:site._id, deviceId:node.deviceId});
+
+    if (node_) {
+      var node__ = deepmerge(node_, node);
+      Nodes.update({_id:node_._id}, node__);
     } else {
-      console.log('updating existing site');
-      var site_ = deepmerge(site, {nodes:nodes});
-      Sites.update({name:siteName}, site_);
+      Nodes.insert(node);
     }
   }
 });
 
 Meteor.methods({
-  updateSiteRaw: function(sel, mod) {
-    console.log('updateSiteRaw method:', sel, mod);
-    Sites.update(sel, mod);
+  setNode: function(deviceId, param, value) {
+    console.log('setNode:', deviceId, param, value);
+    var set = {}
+    set[param] = value;
+    Nodes.update({deviceId:deviceId}, {$set:set});
   }
 });
+
 
