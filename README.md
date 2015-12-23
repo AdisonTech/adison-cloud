@@ -54,9 +54,9 @@ Tested on Linux and Windows 7 with NodeJS 4.1 and Meteor 1.2.
 
 The Cloud API is exposed via DDP and HTTP, so you can use either.  Typically, a Linux based gateway might communicate via DDP, and simpler endpoints (ESP8266) might communicate using HTTP.
 
-* __updateNode__(*siteName, nodeData*): allows a node to send new data to the cloud.  Also used to register a new node.  Needs to send an JSON array of parameters.
+* **updateNode(siteName, nodeData)**: allows a node to send new data to the cloud.  Also used to register a new node.  Needs to send an JSON array of parameters.
     * __siteName__: string - short name for the site
-    * *nodeData*: object 
+    * __nodeData__: object 
         * __deviceId__: string - globally unique identifier for the node (MAC address, etc).
         * __friendlyName__: string - used to easily identify the device (Office Light, Living Rm Env Sensor, etc)
         * __inputs__: object - current inputs read by device.  All outputs are reflected to inputs so we can verify when they actually change.   Example, *{temp:34, gpio5:1, binaryState:0, brightness: 0.84}*
