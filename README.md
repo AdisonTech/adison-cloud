@@ -54,13 +54,13 @@ Tested on Linux and Windows 7 with NodeJS 4.1 and Meteor 1.2.
 
 The Cloud API is exposed via DDP and HTTP, so you can use either.  Typically, a Linux based gateway might communicate via DDP, and simpler endpoints (ESP8266) might communicate using HTTP.
 
-* *updateNode(siteName, nodeData)*: allows a node to send new data to the cloud.  Also used to register a new node.  Needs to send an JSON array of parameters.
-    * *siteName*: string - short name for the site
+* __updateNode__(*siteName, nodeData*): allows a node to send new data to the cloud.  Also used to register a new node.  Needs to send an JSON array of parameters.
+    * __siteName__: string - short name for the site
     * *nodeData*: object 
-        * *deviceId*: string - globally unique identifier for the node (MAC address, etc).
-        * *friendlyName*: string - used to easily identify the device (Office Light, Living Rm Env Sensor, etc)
-        * *inputs*: object - current inputs read by device.  All outputs are reflected to inputs so we can verify when they actually change.   Example, *{temp:34, gpio5:1, binaryState:0, brightness: 0.84}*
-        * *outputs*: object - commanded states for any outputs.  Note, this does not necessarily reflect the actual state, but what we are commanding it to be.  Example, *{binaryState:1, brightness: 0.85, gpio5: 0}*
+        * __deviceId__: string - globally unique identifier for the node (MAC address, etc).
+        * __friendlyName__: string - used to easily identify the device (Office Light, Living Rm Env Sensor, etc)
+        * __inputs__: object - current inputs read by device.  All outputs are reflected to inputs so we can verify when they actually change.   Example, *{temp:34, gpio5:1, binaryState:0, brightness: 0.84}*
+        * __outputs__: object - commanded states for any outputs.  Note, this does not necessarily reflect the actual state, but what we are commanding it to be.  Example, *{binaryState:1, brightness: 0.85, gpio5: 0}*
 
 
 ## License 
