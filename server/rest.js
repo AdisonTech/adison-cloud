@@ -1,6 +1,7 @@
 
 
-// Global API configuration
+
+/*
 var Api = new Restivus({
   useDefaultAuth: true,
   prettyJson: true
@@ -9,4 +10,5 @@ var Api = new Restivus({
 Api.addCollection(Sites);
 Api.addCollection(Nodes);
 Api.addCollection(Values);
+*/
 
