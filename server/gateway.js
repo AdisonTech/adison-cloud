@@ -24,10 +24,10 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  setNode: function(deviceId, param, value) {
-    console.log('setNode:', deviceId, param, value);
+  setNodeOutput: function(deviceId, param, value) {
+    console.log('setNodeOutput:', deviceId, param, value);
     var set = {}
-    set[param] = value;
+    set["outputs." + param] = value;
     Nodes.update({deviceId:deviceId}, {$set:set});
   }
 });

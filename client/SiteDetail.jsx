@@ -1,12 +1,12 @@
 
 Outlet = React.createClass({
   handleOnOff() {
-    var cmdBinaryState = this.props.node.binaryState == '0' ? '1' : '0';
-    this.props.cmdBinaryState(this.props.node.deviceId, cmdBinaryState);
+    var setBinaryState = this.props.node.inputs.binaryState == '0' ? '1' : '0';
+    this.props.setBinaryState(this.props.node.deviceId, setBinaryState);
   },
   render() {
     var node = this.props.node;
-    var plugColor = node.binaryState !== '0' ? Colors.yellow500 : null;
+    var plugColor = node.inputs.binaryState !== '0' ? Colors.yellow500 : null;
     return (
       <ListItem
         key = {node.deviceId}
@@ -24,19 +24,19 @@ Bulb = React.createClass({
     return {};
   },
   handleOnOff() {
-    var cmdBinaryState = this.props.node.binaryState == '1' ? '0' : '1';
-    this.props.cmdBinaryState(this.props.node.deviceId, cmdBinaryState);
+    var setBinaryState = this.props.node.inputs.binaryState == '1' ? '0' : '1';
+    this.props.setBinaryState(this.props.node.deviceId, setBinaryState);
   },
-  cmdBrightness(e, value) {
-    this.props.cmdBrightness(this.props.node.deviceId, Math.round(value*100)/100);
+  setBrightness(e, value) {
+    this.props.setBrightness(this.props.node.deviceId, Math.round(value*100)/100);
   },
   handleSettings() {
     this.refs.bulbSettings.show();
   },
   render() {
     var node = this.props.node;
-    var bulbColor = node.binaryState === '1' ? Colors.yellow500 : null;
-    var brightness = +node.brightness;
+    var bulbColor = node.inputs.binaryState === '1' ? Colors.yellow500 : null;
+    var brightness = +node.inputs.brightness;
     var brightnessPercent = Math.round(brightness * 100);
     var description = node.friendlyName + ' ' + brightnessPercent + '%';
     return (
@@ -54,7 +54,7 @@ Bulb = React.createClass({
           title="Bulb Settings">
           Brightness: {brightnessPercent}%
           <Slider name="brightness" 
-            onChange={this.cmdBrightness} 
+            onChange={this.setBrightness} 
             defaultValue={+node.brightness}
           /> 
         </Dialog>
@@ -64,22 +64,22 @@ Bulb = React.createClass({
 });
 
 Node = React.createClass({
-  cmdBrightness(id, b) {
-    this.props.cmdBrightness(id, b);
+  setBrightness(id, b) {
+    this.props.setBrightness(id, b);
   },
-  cmdBinaryState(id, b) {
-    this.props.cmdBinaryState(id, b);
+  setBinaryState(id, b) {
+    this.props.setBinaryState(id, b);
   },
   render() {
     var node = this.props.node;
     
     if (node.type == 'bulb') {
       return <Bulb node={node}
-              cmdBrightness={this.cmdBrightness}
-              cmdBinaryState={this.cmdBinaryState} />;
+              setBrightness={this.setBrightness}
+              setBinaryState={this.setBinaryState} />;
     } else if (node.type == 'outlet') {
       return <Outlet node={node}
-             cmdBinaryState={this.cmdBinaryState} />;
+             setBinaryState={this.setBinaryState} />;
     } else {
       return <ListItem key={node.deviceId} primaryText={node.friendlyName} />;
     }
@@ -101,12 +101,12 @@ SiteDetail = React.createClass({
     FlowRouter.go('/');
   },
 
-  cmdBrightness(id, b) {
-    this.props.cmdBrightness(id, b);
+  setBrightness(id, b) {
+    this.props.setBrightness(id, b);
   },
 
-  cmdBinaryState(id, b) {
-    this.props.cmdBinaryState(id, b);
+  setBinaryState(id, b) {
+    this.props.setBinaryState(id, b);
   },
 
   render() {
@@ -115,8 +115,8 @@ SiteDetail = React.createClass({
     var nodes = this.props.nodes.map(function(n) {
       console.log('node', n);
       return <Node key={n.friendlyName} 
-              node={n} cmdBrightness={that.cmdBrightness}
-              cmdBinaryState={that.cmdBinaryState} />
+              node={n} setBrightness={that.setBrightness}
+              setBinaryState={that.setBinaryState} />
     });
 
     return (
@@ -138,17 +138,17 @@ SiteDetailContainer = React.createClass({
       nodes: Nodes.find({siteId: this.props.siteId}).fetch(),
     }
   },
-  cmdBrightness(id, b) {
-    Meteor.call('setNode', id, 'cmdBrightness', b);
+  setBrightness(id, b) {
+    Meteor.call('setNodeOutput', id, 'brightness', b);
   },
 
-  cmdBinaryState(id, b) {
-    Meteor.call('setNode', id, 'cmdBinaryState', b);
+  setBinaryState(id, b) {
+    Meteor.call('setNodeOutput', id, 'binaryState', b);
   },
   render() {
     console.log('data', this.data);
-    return this.data.site ? <SiteDetail cmdBrightness={this.cmdBrightness} 
-      cmdBinaryState={this.cmdBinaryState} site={this.data.site} nodes={this.data.nodes} /> :
+    return this.data.site ? <SiteDetail setBrightness={this.setBrightness} 
+      setBinaryState={this.setBinaryState} site={this.data.site} nodes={this.data.nodes} /> :
       <div>Loading ...</div>;
   }
 });
