@@ -58,7 +58,7 @@ The Cloud API is exposed via DDP and HTTP, so you can use either.  Typically, a 
     * __siteName__: string - short name for the site
     * __nodeData__: object 
         * __deviceId__: string - globally unique identifier for the node (MAC address, etc).
-        * __friendlyName__: string - used to easily identify the device (Office Light, Living Rm Env Sensor, etc)
+        * __friendlyName__: string - used to easily identify the device (Office Light, Living Rm Env Sensor, etc).  This is optional -- may be assigned in portal in some cases.
         * __inputs__: object - current inputs read by device.  All outputs are reflected to inputs so we can verify when they actually change.   Example, *{temp:34, gpio5:1, binaryState:0, brightness: 0.84}*
         * __outputs__: object - commanded states for any outputs.  Note, this does not necessarily reflect the actual state, but what we are commanding it to be.  Example, *{binaryState:1, brightness: 0.85, gpio5: 0}*
 
