@@ -66,7 +66,7 @@ The following are data types that are common to both DDP and HTTP APIs
 
 ### DDP API
 
-* **updateNode(siteName, nodeData)**: allows a node to send new data to the cloud.  Also used to register a new node.  Needs to send an JSON array of parameters.
+* **updateNode(siteName, nodeData)**: allows a node to send new data to the cloud.  Also used to register a new node.  Needs to send an JSON object of parameters.
 
 ### HTTP API
 
