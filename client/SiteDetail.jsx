@@ -6,12 +6,13 @@ Outlet = React.createClass({
   },
   render() {
     var node = this.props.node;
+    var name = node.friendlyName ? node.friendlyName : node.deviceId;
     var plugColor = node.inputs.binaryState !== '0' ? Colors.yellow500 : null;
     return (
       <ListItem
         key = {node.deviceId}
         leftIcon = <FontIcon className="fa fa-plug" color={plugColor}/>
-        primaryText = {node.friendlyName}
+        primaryText = {name}
         onTouchTap = {this.handleOnOff}
       /> 
     )  
@@ -35,10 +36,11 @@ Bulb = React.createClass({
   },
   render() {
     var node = this.props.node;
+    var name = node.friendlyName ? node.friendlyName : node.deviceId;
     var bulbColor = node.inputs.binaryState === '1' ? Colors.yellow500 : null;
     var brightness = +node.inputs.brightness;
     var brightnessPercent = Math.round(brightness * 100);
-    var description = node.friendlyName + ' ' + brightnessPercent + '%';
+    var description = name + ' ' + brightnessPercent + '%';
     return (
       <div>
         <ListItem
@@ -72,6 +74,7 @@ Node = React.createClass({
   },
   render() {
     var node = this.props.node;
+    var name = node.friendlyName ? node.friendlyName : node.deviceId;
     
     if (node.type == 'bulb') {
       return <Bulb node={node}
@@ -81,7 +84,7 @@ Node = React.createClass({
       return <Outlet node={node}
              setBinaryState={this.setBinaryState} />;
     } else {
-      return <ListItem key={node.deviceId} primaryText={node.friendlyName} />;
+      return <ListItem key={node.deviceId} primaryText={name} />;
     }
   }
 });
