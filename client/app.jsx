@@ -14,6 +14,8 @@ Colors = MUI.Styles.Colors;
 Dialog = MUI.Dialog;
 Slider = MUI.Slider;
 Toggle = MUI.Toggle;
+SvgIcon = MUI.SvgIcon;
+FlatButton = MUI.FlatButton;
 
 MainLayout = React.createClass({
   render() {

@@ -22,6 +22,17 @@ Meteor.methods({
       Nodes.insert(node);
     }
   },
+  updateNodeConfig: function(deviceId, config) {
+    var node = Nodes.findOne({deviceId:deviceId});
+
+    if (!node) {
+      console.log("updateNodeConfig failed, can't find node");
+      return;
+    }
+
+    var node_ = deepmerge(node, {config:config});
+    Nodes.update({deviceId:deviceId}, node_);
+  },
   setNodeOutput: function(deviceId, param, value) {
     console.log('setNodeOutput:', deviceId, param, value);
     var set = {}
