@@ -70,13 +70,17 @@ The following are data types that are common to both DDP and HTTP APIs
 
 ### HTTP API
 
-* __http://server/api/:siteName/:deviceId__
-    * PUT: send __nodeData__ as JSON string
+* __http://server/api/node/:siteName/:deviceId__
+    * POST: send __nodeData__ as JSON
+    * GET: get __nodeData__ as JSON
 
 Example of sending data to cloud using HTTP API:
 
-```curl -H "Content-Type: application/json" -X PUT -d '{"type":"esp8266", "inputs":{"temp":78, "humidity":45.5}}' http://localhost:3000/api/node/MySite/1234```
+```curl -H "Content-Type: application/json" -X POST -d '{"type":"esp8266", "inputs":{"temp":78, "humidity":45.5}}' http://localhost:3000/api/node/MySite/1234```
 
+Example of getting data for sensor:
+
+```wget http://localhost:3000/api/node/MySite/1234```
 
 ## License 
 
