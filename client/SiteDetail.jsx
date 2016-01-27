@@ -71,7 +71,10 @@ Esp = React.createClass({
       <div>
         <ListItem 
           key={node.deviceId} 
-          leftIcon = <SvgIcon> <path d="icons/expressif.svg"></path></SvgIcon> 
+          //leftIcon = <SvgIcon height="210" width="400"> 
+          //<path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+          //</SvgIcon> 
+          leftIcon = <FontIcon className="material-icons">developer_board</FontIcon>
           primaryText={name} 
           initiallyOpen={true}
           nestedItems={inputs}
